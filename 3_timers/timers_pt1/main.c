@@ -6,7 +6,7 @@
 int main() {
 
 	gpioInit();
-	timer_config();
+	timerConfig();
 
 	while(1){
 
