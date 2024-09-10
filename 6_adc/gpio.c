@@ -7,7 +7,7 @@ void gpioInit() {
 	RCC_AHBENR |= PORTA_CLK_EN;			// Enable peripheral clock for I/O port A
 	GPIOA_MODER |= MODER1_ANALOG;		// Enable Analog Mode
 
-    RCC_AHBENR |= PORTB_CLK_EN;	    	// Enable peripheral clock for I/O port B
+	RCC_AHBENR |= PORTB_CLK_EN;	    	// Enable peripheral clock for I/O port B
 	GPIOB_MODER |= MODER4_AF;		    // Alternate Function Mode for PB4
 	GPIOB_AFRL |= AFSEL4_AF1;        	// Enable Alternate Function 1 - TIM3_CH1
 
