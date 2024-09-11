@@ -10,7 +10,7 @@ Program to toggle an LED based on the button state.
 
 ### Connections
 
-![20240827_115019 2](https://github.com/user-attachments/assets/90f127e6-9061-4d42-af73-cbc3eec68240)
+![20240827_115019 2](./assets/main.jpg)
 
    
    Pin D9 (PA 9) - Input Mode: Read button state    
@@ -19,14 +19,14 @@ Program to toggle an LED based on the button state.
    
    
 ### Pull Up vs Pull Down   
-![maxresdefault](https://github.com/user-attachments/assets/fe1d67fb-0c87-4280-99fe-3f3a926de422)
+![maxresdefault](./assets/pullupdown.jpg)
 
    - These configurations are more relevant to input pins since output pins are usually driven by the microcontroller.             
    - **Pull Up:** Connects the pin to Vcc, so the pin is HIGH when on standby.        
    - **Pull Down:** Connects the pin to GND, so the pin is LOW when on standby. This configuration is vital for the input pin to prevent logic high (1) when the button is not pressed.      
 
 ### Open drain vs Push Pull 
-![udA3y](https://github.com/user-attachments/assets/86796466-c801-40b8-bf20-0eea10df1d19)
+![udA3y](./assets/pushpull.png)
 
    &emsp;These configurations are relevant to output pins used to actively drive the pins high and low.     
 
@@ -46,6 +46,11 @@ Program to toggle an LED based on the button state.
    - **High State:** When gate voltage _lesser_ than threshold voltage is supplied to the PMOS, it creates a connection to VDD (NMOS is open).    
    - This is the preferred configuration for applications that have to switch between states quickly.    
 
+### GPIO Pin structure
+
+![](./assets/ioport.png)
+
+This image shows the structure of an I/O pin with the discussed configuration.
     
 ### Registers 
    _x_ - A, C    
