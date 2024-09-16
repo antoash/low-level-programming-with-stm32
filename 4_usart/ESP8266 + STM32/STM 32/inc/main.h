@@ -2,6 +2,7 @@
 #define MAIN_H
 
 #include <stm32f0xx.h>
+#include <stdint.h>
 
 #define GPIOA_CLK_ENABLE    (1<<17)
 #define PA2_AF              (2<<4)

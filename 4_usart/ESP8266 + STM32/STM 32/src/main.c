@@ -12,7 +12,8 @@
 int main() {
 
 	gpioInit();
-	usartInit();
+	usart2Init();
+	usart3Init();
 
 	uint8_t rx_buffer;
 
