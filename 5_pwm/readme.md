@@ -1,4 +1,5 @@
-A program to generate a PWM signal with 50% duty cycle and time period of 1 second.
+A program to generate a PWM signal with 50% duty cycle and time period of 1 second.   
+[View Demo](https://youtu.be/p4pt5MOWSSw)  
 ### What is a Pulse Width Modulation?
 Pulse Width Modulation (PWM) is a technique used to generate analog signals from digital outputs by varying the duty cycle of a digital pulse.             
 In an STM32 microcontroller, PWM is typically generated using the timer peripherals. 
@@ -101,7 +102,6 @@ Set the duty cycle which is based on the ARR value using CCR1 register.
 Enable PWM mode 2 which outputs logic LOW when _TIM3_CNT_<TIM3_CCR1 otherwise out put is logic HIGH.            
 Enable output signal and start counter.              
         
-### Result & Demonstration   
+### Result    
 ![12](https://github.com/user-attachments/assets/fd76e6df-dc90-49a8-acf3-8f6bce9c8fef)
-[View Demo](https://youtu.be/p4pt5MOWSSw)
 
