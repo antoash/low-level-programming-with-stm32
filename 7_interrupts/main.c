@@ -5,14 +5,12 @@
 
 int main() {
 
-	// disable global interrupts - for uninterrupted & smooth initialization
-	__disable_irq();
+	__disable_irq(); 		// Disable global interrupts - Prevent unexpected interruptions during initialization
 
 	gpioInit();
 	extiInit();
 
-	// enable global interrupts
-	__enable_irq();
+	__enable_irq();				// Enable global interrupts
 
 	while (1);
 }
