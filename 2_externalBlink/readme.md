@@ -1,20 +1,21 @@
-### Blink 202.      
+### Blink 202.        
+[Demo](https://youtu.be/tKnZ2aMsRHI)
 
-Program to toggle an LED based on the button state.
+A program to toggle an LED based on reading the button state.
 
 | Button      | LED |
 | ----------- | --- |
 | Pressed     | OFF |
 | Not Pressed | ON  |
 
+The button is connected to a Pull Up GPIO pin.     
+When untouched, the pin reads logic HIGH.    
+When pressed, the pin reads logic LOW.         
 
 ### Connections
 
-![20240827_115019 2](./assets/main.jpg)
-
-   
-   Pin D9 (PA 9) - Input Mode: Read button state    
-   Pin D8 (PC 7) - Output Mode: Drive LED 
+   Pin D9 (PA 9) - GPIO Input Mode (Pull Up): Read button state    
+   Pin D8 (PC 7) - GPIO Output Mode: Drive LED 
 
    
    
@@ -55,30 +56,30 @@ This image shows the structure of an I/O pin with the discussed configuration.
 ### Registers 
    _x_ - A, C    
    
-   &emsp;_**RCC_AHBENR**_ (AHB peripheral clock enable)     
-   &emsp;&emsp;Set bit 19 & 17 HIGH to enable peripheral clock for ports A & C.    
+   - _**RCC_AHBENR**_ (AHB peripheral clock enable)     
+      - Set bit 19 & 17 HIGH to enable peripheral clock for ports A & C.    
    
    
-   &emsp;**_GPIOx_MODER_** (GPIO Mode)      
-   &emsp;&emsp;Set Bits [19:18] to 01 to enable GPIO output mode for PA 9.        
-   &emsp;&emsp;Reset Bits [15:14] to 00 to enable input mode for PC 7.
+   - **_GPIOx_MODER_** (GPIO Mode)      
+      - Set Bits [19:18] to 01 to enable GPIO output mode for PA 9.        
+      - Reset Bits [15:14] to 00 to enable input mode for PC 7.
 
-   &emsp;**_GPIOx_OTYPER_** (Output Type)            
-   &emsp;&emsp;Set Bit 9 for output type push-pull.    
+   - **_GPIOx_OTYPER_** (Output Type)            
+      - Set Bit 9 for output type push-pull.    
 
-   &emsp;**_GPIOx_PUPDR_** (Pull up/Pull down Register)        
-   &emsp;&emsp;Enable pull up for PA 9 by setting Bits [19:18] as 01.  
-   &emsp;&emsp;Enable pull down for PC 7 (input) by setting Bits [15:14] as 10.   
+   - **_GPIOx_PUPDR_** (Pull up/Pull down Register)        
+      - Enable pull up for PA 9 by setting Bits [19:18] as 01.  
+      - Enable pull down for PC 7 (input) by setting Bits [15:14] as 10.   
 
-   &emsp;**_GPIOx_IDR_** (Input Data Register)       
-   &emsp;&emsp;Use this register to check whether button is pressed (HIGH) to switch off the LED.      
+   - **_GPIOx_IDR_** (Input Data Register)       
+      - Use this register to check whether button is pressed (HIGH) to switch off the LED.      
 
-   &emsp;**_GPIOx_ODR_** (Output Data Register)      
-   &emsp;&emsp;Set this register to output HIGH signal on the PA 9 pin.          
+   - **_GPIOx_ODR_** (Output Data Register)      
+      - Set this register to output HIGH signal on the PA 9 pin.          
   
-   &emsp;**_GPIOx_BSRR_** (Bit Set/Reset Register)      
-   &emsp;&emsp;Set Bit 9 to set the corresponding port A ORD register as HIGH.     
-   &emsp;&emsp;Set Bit 25 to reset the corresponding port A ORD register as LOW.   
+   - **_GPIOx_BSRR_** (Bit Set/Reset Register)      
+      - Set Bit 9 to set the corresponding port A ORD register as HIGH.     
+      - Set Bit 25 to reset the corresponding port A ORD register as LOW.   
 	     
 ### Code overview                  
                

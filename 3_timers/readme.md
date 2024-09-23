@@ -1,4 +1,5 @@
-Using a Timer to toggle an LED every 500ms.
+Using a Timer to toggle an LED every 500ms.   
+[Demo](https://youtu.be/H-Bpg4UnL-A)
 
 ### Timers Available 
 On the STM32 F072RB, these are the timers available:
@@ -37,9 +38,9 @@ Only possible variable is the time period, so we utilize the prescalar.
 &emsp;	0.5s     ----->    x   
 &emsp;	$x = {{0.5 \times 65536} \over 2.048} = 16000 ticks$
 ### Relevant Registers 
-- _RCC_APB1ENR_ (APB peripheral clock enable register 1)
+- _**RCC_APB1ENR**_ (APB peripheral clock enable register 1)
 	- Enable timer 14 by setting bit 8 - TIM14EN
-- _TIM14_CR1_ (TIM14 control register 1)
+- _**TIM14_CR1**_ (TIM14 control register 1)
 	- Bit 7 - ARPE (Auto reload preload enable). Set 1 
 		- Ensures any updates to ARR doesn't take place immediately. Instead, ARR will be updated at the next update event. Till then it will be stored in a shadow register. Without this, ARR will be updated immediately when written to (not good esp in middle of counting). 
 	- Bit 2 - URS (update request source).
@@ -49,25 +50,25 @@ Only possible variable is the time period, so we utilize the prescalar.
 		- Set 1 - no update event (UEV) generated.
 	- Bit 0 - CEN (counter enable) - Set to enable counter.
 
-- _TIMx_ARR_ (ARR - Auto Reload Register) 
+- _**TIMx_ARR**_ (ARR - Auto Reload Register) 
 	- On matching the value stored in this register, the counter will be RESET back to zero.
 	- An update event is generated which is used along with DMA/Interrupt to perform a task on completion of the timer.
-- _TIMx_PSC_ (Prescalar Register) 
+- _**TIMx_PSC**_ (Prescalar Register) 
 	- Stores the prescalar factor which is a 16bit value from 1 to 65536.
-- _TIMx_CNT_ (Counter Register)
+- _**TIMx_CNT**_ (Counter Register)
 	- Keeps track of the count and is incremented each clock cycle.
 	- It will count from 0 to the value stored in TIMx_ARR after which is.
 
-- _TIM14_DIER_ (TIM14 interrupt enable register)
+- _**TIM14_DIER**_ (TIM14 interrupt enable register)
 	- Bit 0 - UIE (update interrupt enable). set 1 to enable
 		- When set to 1, the update interrupt is enabled. The timer will generate an interrupt request whenever an update event occurs
 		- Set to 0, no interrupt request will be generated when an update event occurs.
-- _TIM14_SR_ (Status register)
+- _**TIM14_SR**_ (Status register)
 	- Bit 0 - UIF update interrupt flag. 0 indicates no update occurred. 
 		- 1 indicates update interrupt pending. This is set by the hardware when: 
 			- Overflow & UDIS = 0 in TIM14_CR1 register
 			- rc_w0 - Software can read as well as clear this bit by writing 0. Writing 1 has no effect on the bit value.
-- _TIM14_EGR_  (Event Generation Register)    
+- _**TIM14_EGR**_  (Event Generation Register)    
 	- Automatically cleared by hardware.
 	- Bit 0 - UG (update generation) 
 		- At 1, reinitialize the counter and generate updates of registers. Prescalar Counter (keeps track of ticks doesn't store the psc value) is cleared and counter is also cleared.
