@@ -7,8 +7,8 @@ void extiInit(void) {
 //	SYSCFG->EXTICR[0] |= (1<<4);			// Map PB1 line to EXTI1
 //	EXTI->IMR |= (1<<1);					// Unmask EXTI1
 //	EXTI->RTSR |= (1<<1);					// Set rising edge trigger
-//	EXTI->FTSR |= (1<<1);					// Set fising edge trigger
-//	NVIC_EnableIRQ(EXTI0_1_IRQn); 			// Enable NVIC Controller for TIM14
+//	EXTI->FTSR |= (1<<1);					// Set falling edge trigger
+//	NVIC_EnableIRQ(EXTI0_1_IRQn); 			// Enable NVIC Controller for EXTI0 & EXTI1 lines
 
 }
 
