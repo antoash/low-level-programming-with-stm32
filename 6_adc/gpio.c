@@ -15,7 +15,7 @@ void gpioInit() {
 
 void setDutyCycle(uint16_t data){
 
-	uint16_t dutyCycle = (data * TIM3_ARR) / 4095;
-	TIM3_CCR1 = dutyCycle;
+	uint16_t dutyCycle = (data * TIM3_ARR) / 4095;		// Calculating the new duty cycle as a ratio of adc reading by 4095 (max resolution of this ADC channel) 
+	TIM3_CCR1 = dutyCycle;								// Setting the new duty cycle
 	
 }
